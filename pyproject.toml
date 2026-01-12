@@ -1,7 +1,29 @@
-[project]
+[tool.poetry]
 name = "nofx"
 version = "0.1.0"
 description = "Add your description here"
-readme = "README.md"
-requires-python = ">=3.12"
-dependencies = []
+authors = ["Your Name <you@example.com>"]
+package-mode = false
+
+[tool.poetry.dependencies]
+python = ">=3.12"
+fastapi = "0.115.0"
+uvicorn = {extras = ["standard"], version = "0.32.0"}
+pydantic = "2.10.0"
+pydantic-settings = "2.6.0"
+sqlalchemy = {extras = ["asyncio"], version = "2.0.36"}
+aiosqlite = "0.20.0"
+alembic = "1.14.0"
+python-jose = {extras = ["cryptography"], version = "3.3.0"}
+passlib = {extras = ["bcrypt"], version = "1.7.4"}
+python-multipart = "0.0.12"
+pybit = "5.8.0"
+websockets = "14.1"
+httpx = "0.28.1"
+python-dotenv = "1.0.1"
+loguru = "0.7.3"
+python-dateutil = "2.9.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

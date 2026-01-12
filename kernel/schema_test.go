@@ -3,6 +3,8 @@ package kernel
 import (
 	"strings"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 // TestDataDictionary 测试数据字典定义
@@ -275,4 +277,30 @@ func TestRuleDefinitionMethods(t *testing.T) {
 	if rule.GetReason(LangEnglish) != "English reason" {
 		t.Error("GetReason(English) failed")
 	}
+}
+
+func TestDecision_LimitOrderFields(t *testing.T) {
+	decision := Decision{
+		Symbol: "BTCUSDT",
+		Action: "place_limit_order",
+	}
+
+	// Test limit order specific fields exist
+	decision.LimitPrice = 45000.0
+	decision.OrderID = "order123"
+
+	assert.Equal(t, "place_limit_order", decision.Action)
+	assert.Equal(t, 45000.0, decision.LimitPrice)
+	assert.Equal(t, "order123", decision.OrderID)
+}
+
+func TestDecision_CancelOrderAction(t *testing.T) {
+	decision := Decision{
+		Symbol:  "BTCUSDT",
+		Action:  "cancel_order",
+		OrderID: "order123",
+	}
+
+	assert.Equal(t, "cancel_order", decision.Action)
+	assert.Equal(t, "order123", decision.OrderID)
 }

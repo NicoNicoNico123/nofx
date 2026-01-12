@@ -134,23 +134,19 @@ type Decision struct {
 
 	// Opening position parameters
 	Leverage        int     `json:"leverage,omitempty"`
-	PositionSide    string  `json:"position_side,omitempty"`
-	Quantity        float64 `json:"quantity,omitempty"`
-	Confidence      float64 `json:"confidence,omitempty"` // AI confidence score (0-1)
+	PositionSizeUSD float64 `json:"position_size_usd,omitempty"`
+	StopLoss        float64 `json:"stop_loss,omitempty"`
+	TakeProfit      float64 `json:"take_profit,omitempty"`
 
-	// Limit order specific parameters
-	LimitPrice      float64 `json:"limit_price,omitempty"`  // Limit price for limit orders
-	OrderID         string  `json:"order_id,omitempty"`     // Order ID to cancel (for cancel_order action)
-	TimeInForce     string  `json:"time_in_force,omitempty"` // "GTC", "IOC", "FOK"
+	// Limit order specific parameters (NEW)
+	LimitPrice  float64 `json:"limit_price,omitempty"`  // Limit price for limit orders
+	OrderID     string  `json:"order_id,omitempty"`     // Order ID to cancel (for cancel_order action)
+	TimeInForce string  `json:"time_in_force,omitempty"` // "GTC", "IOC", "FOK"
 
-	// Stop loss / take profit (optional, for position management)
-	StopLossPrice   float64 `json:"stop_loss_price,omitempty"`
-	TakeProfitPrice float64 `json:"take_profit_price,omitempty"`
-
-	// Risk management
-	RiskPercent     float64 `json:"risk_percent,omitempty"` // Position risk as % of account
-	RiskUSD         float64 `json:"risk_usd,omitempty"`     // Maximum USD risk
-	Reasoning       string  `json:"reasoning"`
+	// Common parameters
+	Confidence int     `json:"confidence,omitempty"` // Confidence level (0-100)
+	RiskUSD    float64 `json:"risk_usd,omitempty"`   // Maximum USD risk
+	Reasoning  string  `json:"reasoning"`
 }
 
 // FullDecision AI's complete decision (including chain of thought)

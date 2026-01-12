@@ -304,3 +304,28 @@ func TestDecision_CancelOrderAction(t *testing.T) {
 	assert.Equal(t, "cancel_order", decision.Action)
 	assert.Equal(t, "order123", decision.OrderID)
 }
+
+func TestDecision_BackwardCompatibility(t *testing.T) {
+	// Test that all original fields still exist
+	decision := Decision{
+		Symbol:          "BTCUSDT",
+		Action:          "open_long",
+		Leverage:        5,
+		PositionSizeUSD: 1000.0,
+		StopLoss:        43000.0,
+		TakeProfit:      47000.0,
+		Confidence:      85,
+		RiskUSD:         50.0,
+		Reasoning:       "Strong bullish signal",
+	}
+
+	assert.Equal(t, "BTCUSDT", decision.Symbol)
+	assert.Equal(t, "open_long", decision.Action)
+	assert.Equal(t, 5, decision.Leverage)
+	assert.Equal(t, 1000.0, decision.PositionSizeUSD)
+	assert.Equal(t, 43000.0, decision.StopLoss)
+	assert.Equal(t, 47000.0, decision.TakeProfit)
+	assert.Equal(t, 85, decision.Confidence)
+	assert.Equal(t, 50.0, decision.RiskUSD)
+	assert.Equal(t, "Strong bullish signal", decision.Reasoning)
+}

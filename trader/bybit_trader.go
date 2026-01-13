@@ -44,10 +44,16 @@ type BybitTrader struct {
 }
 
 // NewBybitTrader creates a Bybit trader
-func NewBybitTrader(apiKey, secretKey string) *BybitTrader {
+func NewBybitTrader(apiKey, secretKey string, testnet bool) *BybitTrader {
 	const src = "Up000938"
 
-	client := bybit.NewBybitHttpClient(apiKey, secretKey, bybit.WithBaseURL(bybit.MAINNET))
+	// Determine base URL based on testnet flag
+	baseURL := bybit.MAINNET
+	if testnet {
+		baseURL = bybit.TESTNET
+	}
+
+	client := bybit.NewBybitHttpClient(apiKey, secretKey, bybit.WithBaseURL(baseURL))
 
 	// Set HTTP transport
 	if client != nil && client.HTTPClient != nil {

@@ -682,6 +682,7 @@ func (tm *TraderManager) addTraderFromStore(traderCfg *store.Trader, aiModelCfg 
 	case "bybit":
 		traderConfig.BybitAPIKey = string(exchangeCfg.APIKey)
 		traderConfig.BybitSecretKey = string(exchangeCfg.SecretKey)
+		traderConfig.BybitTestnet = exchangeCfg.Testnet
 	case "okx":
 		traderConfig.OKXAPIKey = string(exchangeCfg.APIKey)
 		traderConfig.OKXSecretKey = string(exchangeCfg.SecretKey)

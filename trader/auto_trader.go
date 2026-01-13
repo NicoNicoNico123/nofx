@@ -33,6 +33,7 @@ type AutoTraderConfig struct {
 	// Bybit API configuration
 	BybitAPIKey    string
 	BybitSecretKey string
+	BybitTestnet   bool
 
 	// OKX API configuration
 	OKXAPIKey    string
@@ -226,7 +227,7 @@ func NewAutoTrader(config AutoTraderConfig, st *store.Store, userID string) (*Au
 		trader = NewFuturesTrader(config.BinanceAPIKey, config.BinanceSecretKey, userID)
 	case "bybit":
 		logger.Infof("🏦 [%s] Using Bybit Futures trading", config.Name)
-		trader = NewBybitTrader(config.BybitAPIKey, config.BybitSecretKey)
+		trader = NewBybitTrader(config.BybitAPIKey, config.BybitSecretKey, config.BybitTestnet)
 	case "okx":
 		logger.Infof("🏦 [%s] Using OKX Futures trading", config.Name)
 		trader = NewOKXTrader(config.OKXAPIKey, config.OKXSecretKey, config.OKXPassphrase)

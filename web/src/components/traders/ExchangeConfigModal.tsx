@@ -704,8 +704,8 @@ export function ExchangeConfigModal({
                           </label>
                           <div className="text-xs mt-1" style={{ color: '#848E9C' }}>
                             {language === 'zh'
-                              ? '启用后将使用 Bybit Demo API (https://api-demo.bybit.com) 进行交易'
-                              : 'Enable to use Bybit Demo API (https://api-demo.bybit.com) for trading'}
+                              ? '启用后将使用 Bybit 测试网环境进行交易'
+                              : 'Enable to use Bybit testnet environment for trading'}
                           </div>
                         </div>
                       )}

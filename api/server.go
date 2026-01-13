@@ -599,6 +599,7 @@ func (s *Server) handleCreateTrader(c *gin.Context) {
 			tempTrader = trader.NewBybitTrader(
 				string(exchangeCfg.APIKey),
 				string(exchangeCfg.SecretKey),
+				exchangeCfg.Testnet,
 			)
 		case "okx":
 			tempTrader = trader.NewOKXTrader(
@@ -1143,6 +1144,7 @@ func (s *Server) handleSyncBalance(c *gin.Context) {
 		tempTrader = trader.NewBybitTrader(
 			string(exchangeCfg.APIKey),
 			string(exchangeCfg.SecretKey),
+			exchangeCfg.Testnet,
 		)
 	case "okx":
 		tempTrader = trader.NewOKXTrader(
@@ -1295,6 +1297,7 @@ func (s *Server) handleClosePosition(c *gin.Context) {
 		tempTrader = trader.NewBybitTrader(
 			string(exchangeCfg.APIKey),
 			string(exchangeCfg.SecretKey),
+			exchangeCfg.Testnet,
 		)
 	case "okx":
 		tempTrader = trader.NewOKXTrader(

@@ -689,6 +689,27 @@ export function ExchangeConfigModal({
                         />
                       </div>
 
+                      {currentExchangeType === 'bybit' && (
+                        <div>
+                          <label className="flex items-center gap-2 cursor-pointer">
+                            <input
+                              type="checkbox"
+                              checked={testnet}
+                              onChange={(e) => setTestnet(e.target.checked)}
+                              className="w-4 h-4 rounded accent-yellow-500"
+                            />
+                            <span className="text-sm font-semibold" style={{ color: '#EAECEF' }}>
+                              {t('useTestnet', language)}
+                            </span>
+                          </label>
+                          <div className="text-xs mt-1" style={{ color: '#848E9C' }}>
+                            {language === 'zh'
+                              ? '启用后将使用 Bybit Demo API (https://api-demo.bybit.com) 进行交易'
+                              : 'Enable to use Bybit Demo API (https://api-demo.bybit.com) for trading'}
+                          </div>
+                        </div>
+                      )}
+
                       {(currentExchangeType === 'okx' || currentExchangeType === 'bitget') && (
                         <div>
                           <label

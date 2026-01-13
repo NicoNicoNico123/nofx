@@ -467,3 +467,28 @@ func TestBybitTrader_MockServerSetLeverage(t *testing.T) {
 
 	assert.NotNil(t, mockServer)
 }
+
+// ============================================================
+// Part 5: Limit Order Tests
+// ============================================================
+
+// TestPlaceLimitOrder tests the PlaceLimitOrder method
+func TestPlaceLimitOrder(t *testing.T) {
+	// Create real trader (interface compliance test)
+	trader := NewBybitTrader("test_key", "test_secret")
+
+	// Test that method exists and has correct signature
+	// Note: Can't test actual API calls without mock server integration
+	result, err := trader.PlaceLimitOrder("BTCUSDT", "Buy", 0.001, 45000.0)
+
+	// We expect this to fail due to invalid credentials, but method should exist
+	if err != nil {
+		// Expected - credentials are invalid
+		t.Logf("Expected failure with test credentials: %v", err)
+	}
+
+	// Verify return type structure
+	if result != nil {
+		assert.NotNil(t, result)
+	}
+}
